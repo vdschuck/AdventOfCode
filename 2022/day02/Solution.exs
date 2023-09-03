@@ -25,7 +25,7 @@ defmodule RockPaperScissors do
     @scissors => 3
   }
 
-  def set_player_score(winner, player) do
+  def get_player_score(winner, player) do
     @play_score[winner] + @shape_score[player]
   end
 
@@ -41,7 +41,7 @@ defmodule RockPaperScissors do
         _ -> nil
       end
 
-    set_player_score(winner, player)
+    get_player_score(winner, player)
   end
 
   def calculate_score({opponent, result}, :part_2) do
@@ -65,7 +65,7 @@ defmodule RockPaperScissors do
         @draw -> nil
       end
 
-    set_player_score(winner, player)
+    get_player_score(winner, player)
   end
 
   def play_game(filename, mode \\ :part_1) do
@@ -78,9 +78,8 @@ defmodule RockPaperScissors do
           total + calculate_score({@shapes[first_column], second_column}, mode)
         end)
 
-      {:error, _reason} ->
-        IO.puts("Error: Could not read the file #{filename}.")
-        -1
+      {:error, reason} ->
+        IO.puts("Error: Could not read the file #{filename}. Reason #{reason}")
     end
   end
 end
