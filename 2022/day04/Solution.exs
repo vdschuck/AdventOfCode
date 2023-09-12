@@ -32,11 +32,9 @@ end
 part_one = CampCleanUp.parse_content("input.txt") |> CampCleanUp.part_one()
 
 # input_test.txt = 2
-# 518
 IO.puts("Part1: #{part_one}")
 
 part_two = CampCleanUp.parse_content("input.txt") |> CampCleanUp.part_two()
 
 # input_test.txt = 4
-# 909
 IO.puts("Part2: #{part_two}")
